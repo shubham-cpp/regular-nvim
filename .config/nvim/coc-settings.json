@@ -1,0 +1,26 @@
+{
+    "coc.preferences.formatOnSaveFiletypes": ["css", "markdown","html","java"],
+    "diagnostic.errorSign": " ",
+    "diagnostic.warningSign": " ",
+    "diagnostic.infoSign": "",
+    "diagnostic.hintSign": " ",
+    "diagnostic.virtualText": true,
+    "suggest.enablePreselect": true,
+    "coc.preferences.hoverTarget": "float",
+    "diagnostic.enable": true,
+    "vimlsp.diagnostic.enable": true,
+    "explorer.width": 30,
+    "explorer.icon.enableNerdfont": true,
+    "explorer.previewAction.onHover": false,
+    "explorer.keyMappings.global": {
+        "<cr>": ["expandable?", "expand", "open"],
+        "T":"open:tab",
+        "<C-cr>":["expandable?", "cd", "open"],
+        "<M-cr>":"open:tab",
+        "v": "open:vsplit",
+        "zm": "collapse:all",
+        "rf": "reveal:sourceWindow"
+    },
+    "clangd.arguments": ["--background-index", "--pch-storage=memory", "--clang-tidy", "--suggest-missing-includes"],
+    "clangd.fallbackFlags": ["-std=c++17"]
+}
