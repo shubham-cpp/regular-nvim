@@ -27,7 +27,9 @@ set foldcolumn=1
 set expandtab
 set shiftwidth=4
 set tabstop=4
-set linebreak
+set colorcolumn=80
+hi ColorColumn ctermbg=lightgrey guibg=lightgrey
+set scrolloff=8
 set cursorline
 set textwidth=80
 set splitbelow
