@@ -36,7 +36,6 @@ set splitbelow
 set splitright
 set smartindent
 set tags+=./.git/tags
-" let session_directory = string.format("%s/session", vim.fn.stdpath('data'))
 let g:session_directory=stdpath('data') . '/session'
 let g:session_autoload="no"
 let g:session_autosave="no"
@@ -112,8 +111,7 @@ augroup File_Reloads
     " Automatically deletes all trailing whitespace and newlines at end of file on save.
     autocmd BufWritePre * %s/\s\+$//e
     autocmd BufWritepre * %s/\n\+\%$//e
-    autocmd BufWritePost packer-plugins.lua PackerCompile
-    au FocusGained,BufEnter * checktime
+    " au FocusGained,BufEnter * checktime
 augroup end " }}}
 
 augroup Comments " {{{
@@ -127,6 +125,7 @@ augroup end " }}}
 augroup Plugin_Confs "{{{
     autocmd!
     au FileType vim,json let g:argwrap_line_prefix = '\'
+    au FileType lua let g:argwrap_line_prefix = ''
 augroup end "}}}
 
 " }}}
@@ -240,7 +239,7 @@ if executable('rg')
 endif
 let g:fzf_history_dir="~/.local/share/fzf-history"
 let g:fzf_tags_command="ctags -R --tag-relative --extras=+f --exclude=.git,pkg,nodemodules,venv --languages=-sql<cr><cr>"
-command! -bang Nvim call fzf#vim#files('~/.config/nvim/', fzf#vim#with_preview({'options': ['--layout=reverse']}), <bang>0)
+command! -bang Nvim call fzf#vim#files(stdpath('config'), fzf#vim#with_preview({'options': ['--layout=reverse']}), <bang>0)
 " }}}
 
 " Subversive setting {{{
@@ -286,7 +285,7 @@ let g:floaterm_height=0.7
 let g:floaterm_wintitle=0
 let g:floaterm_autoclose=1
 let g:floaterm_autohide=1
-let g:floaterm_shell='fish'
+" let g:floaterm_shell='fish'
 
 if executable('lf')
     command! FMFloatermNew lf
@@ -298,6 +297,6 @@ endif
 " }}}
 
 " Source Aditional Files -------- {{{
-source ~/.config/nvim/coc_settings.vim
+source ~/.config/nvim/mcoc.vim
 
 " }}}
