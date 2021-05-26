@@ -54,32 +54,7 @@ set showtabline=2
 set noshowmode
 set termguicolors
 
-let g:tokyonight_style="storm" " available: night, storm
-let g:tokyonight_enable_italic=1
-
-let g:gruvbox_italic=1
-let g:gruvbox_improved_strings=1
-let g:gruvbox_improved_warnings=1
-let g:gruvbox_contrast_dark="hard"
-
-let g:dracula_bold=1
-let g:dracula_italic=1
-let g:dracula_underline=1
-let g:dracula_undercurl=1
-" let dracula_inverse=1
-let g:dracula_colorterm=1
-
-" ocean: #1b2b34
-" medium: #282C34
-" deep:#212112
-" darker:#1d1f21
-" let g:oceanic_material_transparent_background = 1
-let g:oceanic_material_background="darker"
-let g:oceanic_material_allow_bold=1
-let g:oceanic_material_allow_italic=1
-let g:oceanic_material_allow_underline=1
-let g:oceanic_material_allow_undercurl=1
-colorscheme oceanic_material
+colorscheme challenger_deep
 
 " }}}
 
@@ -125,7 +100,8 @@ augroup end " }}}
 augroup Plugin_Confs "{{{
     autocmd!
     au FileType vim,json let g:argwrap_line_prefix = '\'
-    au FileType lua let g:argwrap_line_prefix = ''
+    au FileType lua let g:argwrap_line_prefix = ' '
+    au BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 augroup end "}}}
 
 " }}}
@@ -135,9 +111,7 @@ augroup end "}}}
 nnoremap ,w :w!<cr>
 inoremap jk <esc>
 nnoremap <leader>ct :!ctags -R --tag-relative --extras=+f --exclude=.git,pkg --languages=-sql<cr><cr>
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
-map <silent> <leader><cr> :noh<cr>
+map <silent> <Esc> :noh<cr>
 map 0 ^
 
 " Move a line of text using ALT+[jk] --------- {{{
@@ -158,15 +132,6 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
-" }}}
-
-" => Parenthesis/bracket ----------- {{{
-vnoremap $1 <esc>`>a)<esc>`<i(<esc>
-vnoremap $2 <esc>`>a]<esc>`<i[<esc>
-vnoremap $3 <esc>`>a}<esc>`<i{<esc>
-vnoremap $q <esc>`>a"<esc>`<i"<esc>
-vnoremap $w <esc>`>a'<esc>`<i'<esc>
-vnoremap $e <esc>`>a"<esc>`<i"<esc>
 " }}}
 
 " Copy the Line from the cursor to end of line just like D
@@ -200,7 +165,6 @@ nnoremap <silent> ,s :let @/='\<'.expand('<cword>').'\>'<CR>cgn
 xnoremap <silent> ,s "sy:let @/=@s<CR>cgn
 " Remember to remove after uninstalling coc
 nnoremap <M-e> :CocCommand explorer<CR>
-autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
 " Smart way to move between windows
 nnoremap <C-j> <C-W>j
@@ -257,14 +221,8 @@ onoremap iv :exec "normal! HVL"<cr>
 " Sneak ---------------------- {{{
 
 let g:sneak#label=1
-" case insensitive sneak
 let g:sneak#use_ic_scs=1
-" immediately move to the next instance of search, if you move the cursor sneak is back to default behavior
 let g:sneak#s_next=1
-" Cool prompts
-let g:sneak#prompt='🕵'
-let g:sneak#prompt='🔎'
-" remap so I can use , and ; with f and t
 map <silent> gS <Plug>Sneak_,
 map <silent> gs <Plug>Sneak_,;
 " Change the colors
@@ -275,7 +233,7 @@ map <silent> gs <Plug>Sneak_,;
 " FloatTerm --------------- {{{
 let g:floaterm_keymap_toggle='<F1>'
 let g:floaterm_keymap_next='<Leader>ff'
-let g:floaterm_keymap_prev='<Leader>fb'
+let g:floaterm_keymap_prev='<Leader>fp'
 let g:floaterm_keymap_new='<Leader>fn'
 let g:floaterm_keymap_kill='<Leader>fk'
 let g:floaterm_gitcommit='floaterm'
@@ -285,13 +243,22 @@ let g:floaterm_height=0.7
 let g:floaterm_wintitle=0
 let g:floaterm_autoclose=1
 let g:floaterm_autohide=1
-" let g:floaterm_shell='fish'
 
 if executable('lf')
     command! FMFloatermNew lf
     nmap <Leader>fl :FM<CR>
 endif
 
+" }}}
+
+" Lightline {{{
+
+hi! Folded guifg=white guibg=#100e23
+hi! ColorColumn guibg=#313131
+
+let g:lightline = {
+      \ 'colorscheme': 'jellybeans',
+      \ }
 " }}}
 
 " }}}
