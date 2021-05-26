@@ -32,7 +32,8 @@ Plug 'FooSoft/vim-argwrap'
 
 " Themes   ------------------------ {{{
 
-Plug 'glepnir/oceanic-material'
+" Plug 'glepnir/oceanic-material'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
 " }}}
 
@@ -53,16 +54,6 @@ Plug 'tommcdo/vim-lion'
 
 " Better Synatx Highlighting in Vim {{{
 Plug 'sheerun/vim-polyglot'
-" " Additional Polyglot Setting for various filetypes
-" Plug 'bfrg/vim-cpp-modern'
-" Plug 'tbastos/vim-lua'
-" Plug 'vim-python/python-syntax'
-" Plug 'pboettch/vim-cmake-syntax'
-" Plug 'georgewitteman/vim-fish'
-" Plug 'arzg/vim-sh'
-" Plug 'sheerun/html5.vim'
-" Plug 'gutenye/json5.vim'
-" Plug 'baskerville/vim-sxhkdrc'
 Plug 'euclidianAce/BetterLua.vim'
 
 " }}}
